@@ -15,7 +15,7 @@
 		<main.basedir>${basedir}/../../..</main.basedir>
 		<gradle.executable>./gradlew</gradle.executable>
 		<gradle.task>build</gradle.task>
-		<skip.gradle.build>false</skip.gradle.build>
+		<skip.gradle.build>true</skip.gradle.build>
 		<kotlin.version>1.2.20</kotlin.version>
 	</properties>
 	<scm>

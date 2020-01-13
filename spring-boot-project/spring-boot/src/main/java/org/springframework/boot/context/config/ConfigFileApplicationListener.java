@@ -107,7 +107,7 @@ public class ConfigFileApplicationListener implements EnvironmentPostProcessor, 
 	private static final String DEFAULT_PROPERTIES = "defaultProperties";
 
 	// Note the order is from least to most specific (last one wins)
-	private static final String DEFAULT_SEARCH_LOCATIONS = "classpath:/,classpath:/config/,file:./,file:./config/";
+	private static final String DEFAULT_SEARCH_LOCATIONS = "classpath:/";
 
 	private static final String DEFAULT_NAMES = "application";
 

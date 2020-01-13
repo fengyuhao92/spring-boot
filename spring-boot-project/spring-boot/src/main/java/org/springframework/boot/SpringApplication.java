@@ -265,7 +265,9 @@ public class SpringApplication {
 		this.resourceLoader = resourceLoader;
 		Assert.notNull(primarySources, "PrimarySources must not be null");
 		this.primarySources = new LinkedHashSet<>(Arrays.asList(primarySources));
+		//设置应用类型
 		this.webApplicationType = WebApplicationType.deduceFromClasspath();
+		//设置spring initializer
 		setInitializers((Collection) getSpringFactoriesInstances(ApplicationContextInitializer.class));
 		setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
 		this.mainApplicationClass = deduceMainApplicationClass();
@@ -309,6 +311,7 @@ public class SpringApplication {
 			exceptionReporters = getSpringFactoriesInstances(SpringBootExceptionReporter.class,
 					new Class[] { ConfigurableApplicationContext.class }, context);
 			prepareContext(context, environment, listeners, applicationArguments, printedBanner);
+			//refreshContext时会进行bean的初始化,invokeBeanFactoryPostProcessors 进行bean注册
 			refreshContext(context);
 			afterRefresh(context, applicationArguments);
 			stopWatch.stop();
@@ -414,6 +417,14 @@ public class SpringApplication {
 		return getSpringFactoriesInstances(type, new Class<?>[] {});
 	}
 
+	/**
+	 * 获得spring工厂实例
+	 * @param type
+	 * @param parameterTypes
+	 * @param args
+	 * @param <T>
+	 * @return
+	 */
 	private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, Class<?>[] parameterTypes, Object... args) {
 		ClassLoader classLoader = getClassLoader();
 		// Use names and ensure unique to protect against duplicates
