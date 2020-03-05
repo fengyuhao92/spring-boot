@@ -5,6 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+
 /**
  * @Author: <mailto:fengyuhao@youzan.com> NO.03182
  * @Date: 2019/11/22 2:42 PM
@@ -12,10 +14,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class ApplicationContextUtil implements ApplicationContextAware {
 
+	@Resource
+	TestBeanOne testBeanOne;
+
     private static ApplicationContext context;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    	testBeanOne.testProcess();
         ApplicationContextUtil.context = applicationContext;
     }
 

@@ -1,6 +1,6 @@
 package tester.beans;
 
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class PreImportBean {
 
+	@LogAnnotation
 	public String getBeanName(){
 		return "PreImportBean";
 	}

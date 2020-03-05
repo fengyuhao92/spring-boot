@@ -1,8 +1,10 @@
 package tester.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.List;
  */
 @Component
 public class TestBeanOne {
+	@Value("${fyh.test.property}")
+	String appName;
 
 	@Autowired
 	PreImportBean preImportBean;

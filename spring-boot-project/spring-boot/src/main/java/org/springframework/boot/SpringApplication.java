@@ -304,6 +304,7 @@ public class SpringApplication {
 		listeners.starting();
 		try {
 			ApplicationArguments applicationArguments = new DefaultApplicationArguments(args);
+			//设置环境
 			ConfigurableEnvironment environment = prepareEnvironment(listeners, applicationArguments);
 			configureIgnoreBeanInfo(environment);
 			Banner printedBanner = printBanner(environment);
@@ -365,9 +366,13 @@ public class SpringApplication {
 
 	private void prepareContext(ConfigurableApplicationContext context, ConfigurableEnvironment environment,
 			SpringApplicationRunListeners listeners, ApplicationArguments applicationArguments, Banner printedBanner) {
+		//设置上下文的environment
 		context.setEnvironment(environment);
+		//上下文后置处理
 		postProcessApplicationContext(context);
+		//对上下文进行初始化
 		applyInitializers(context);
+		//发布上下文准本完成事件
 		listeners.contextPrepared(context);
 		if (this.logStartupInfo) {
 			logStartupInfo(context.getParent() == null);
